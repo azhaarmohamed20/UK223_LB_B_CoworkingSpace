@@ -44,6 +44,6 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-        // this.role = role; Interface für Standard Rolle setzen.
+        this.role = UserRole.MEMBER;
     }
 }
