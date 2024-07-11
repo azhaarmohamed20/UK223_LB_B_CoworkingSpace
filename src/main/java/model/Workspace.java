@@ -7,7 +7,7 @@ import lombok.Setter;
 @Data
 @Setter
 @Entity
-@Table(name = "workingspace")
+@Table(name = "workspace")
 public class Workspace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
