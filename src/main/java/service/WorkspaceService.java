@@ -11,8 +11,13 @@ import java.util.Optional;
 @Service
 public class WorkspaceService {
 
-    @Autowired
+
     private WorkspaceRepository workspaceRepository;
+
+    @Autowired
+    public WorkspaceService(WorkspaceRepository workspaceRepository) {
+        this.workspaceRepository = workspaceRepository;
+    }
 
     public List<Workspace> getAllWorkspaces(){
         return workspaceRepository.findAll();
