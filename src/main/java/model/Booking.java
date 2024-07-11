@@ -21,7 +21,7 @@ public class Booking {
 
     @OneToOne
     @JoinColumn(name = "workingspace_id")
-    private Workingspace workingspaceId;
+    private Workspace workspaceId;
 
     private LocalDateTime bookingDate;
 
