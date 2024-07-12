@@ -23,6 +23,6 @@ public class UserController {
     public List<User> getAllUsers(){
         return userService.getAllUsers();
     }
-    
+
     
 }
