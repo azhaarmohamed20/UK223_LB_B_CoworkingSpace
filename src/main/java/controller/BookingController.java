@@ -20,12 +20,12 @@ public class BookingController {
         this.bookingService = bookingService;
     }
 
-    @GetMapping
+    @GetMapping("/admin")
     public List<Booking> getAllBookings(){
         return bookingService.getAllBookings();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/admin/{id}")
     public Optional<Booking> getBookingByID(@PathVariable Long id){
         return bookingService.getBookingById(id);
     }
@@ -35,7 +35,7 @@ public class BookingController {
         return bookingService.createBooking(booking);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public Booking updateBooking(@PathVariable Long id,@RequestBody Booking bookingDetails){
         return bookingService.updateBooking(id, bookingDetails);
     }
