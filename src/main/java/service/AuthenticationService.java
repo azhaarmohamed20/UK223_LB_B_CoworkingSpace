@@ -2,6 +2,7 @@ package service;
 
 import dto.LoginUserDto;
 import dto.RegisterUserDto;
+import jakarta.transaction.Transactional;
 import model.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,13 +28,19 @@ public class AuthenticationService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User signup(RegisterUserDto input) {
-        User user = new User()
-                .setFirstName(input.getFirstName())
-                .setLastName(input.getLastName())
-                .setEmail(input.getEmail())
-                .setPassword(passwordEncoder.encode(input.getPassword()))
-                .setRole(input.getRole());
+    @Transactional
+    public User signup(RegisterUserDto registerUserDto) {
+        // Überprüfen, ob es bereits Benutzer gibt
+        boolean isFirstUser = userRepository.count() == 0;
+
+        User user = new User();
+        user.setEmail(registerUserDto.getEmail());
+        user.setFirstName(registerUserDto.getFirstName());
+        user.setLastName(registerUserDto.getLastName());
+        user.setPassword(passwordEncoder.encode(registerUserDto.getPassword()));
+
+        // Setze die Rolle basierend darauf, ob es der erste Benutzer ist
+        user.setRole(isFirstUser ? "ADMIN" : "MEMBER");
 
         return userRepository.save(user);
     }

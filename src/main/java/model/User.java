@@ -36,14 +36,6 @@ public class User implements UserDetails {
         super();
     }
 
-    public User(String firstName, String lastName, String email, String password, String role) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
     public User(String firstName, String lastName, String email, String password) {
         super();
         this.firstName = firstName;
