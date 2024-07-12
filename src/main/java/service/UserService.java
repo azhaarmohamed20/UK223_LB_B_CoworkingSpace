@@ -31,5 +31,19 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // Update User als zusätzliche Implementierung
+   public User updateUser(Long id, User userDetails){
+        User user = userRepository.findById(id).orElseThrow(()-> new RuntimeException("User not found"));
+        user.setFirstName(userDetails.getFirstName());
+        user.setLastName(userDetails.getLastName());
+        user.setEmail(userDetails.getEmail());
+        return userRepository.save(user);
+   }
+
+   public Optional<User> deleteUser(Long id){
+        Optional<User> user = userRepository.findById(id);
+        if(user.isPresent()){
+            userRepository.deleteById(id);
+        }
+        return user;
+   }
 }
