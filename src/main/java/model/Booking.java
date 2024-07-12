@@ -17,16 +17,22 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
-    private User userId;
+    private User user;
 
     @OneToOne
-    @JoinColumn(name = "workingspace_id",  nullable = false)
-    private Workspace workspaceId;
+    @JoinColumn(name = "workspace_id",  nullable = false)
+    private Workspace workspace;
 
     private LocalDateTime bookingDate;
 
     private String bookingStatus;
 
 
+    public void setWorkspace(Workspace workspace) {
+        this.workspace = workspace;
+    }
 
+    public Workspace getWorkspace() {
+        return this.workspace;
+    }
 }
