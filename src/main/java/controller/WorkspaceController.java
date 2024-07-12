@@ -35,19 +35,19 @@ public class WorkspaceController {
         return workspaceService.getWorkspaceById(id);
     }
 
-    @PostMapping
+    @PostMapping("/admin")
     @Operation(summary = "Create a new workspace", description = "Create a new workspace in the system")
     public Workspace createWorkspace(@RequestBody Workspace workspace){
         return workspaceService.createWorkspace(workspace);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     @Operation(summary = "Update a Workspace", description = "Update a workspace in the system")
     public Workspace updateWorkspace(@PathVariable Long id, @RequestBody Workspace workspaceDetails){
         return workspaceService.updateWorkspace(id, workspaceDetails);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     @Operation(summary = "Delete a workspace", description = "Delete a workspace in the system")
     public Optional<Workspace> deleteWorkspace(@PathVariable Long id){
         return workspaceService.deleteWorkspace(id);
