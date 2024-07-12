@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface WorkspaceRepository extends JpaRepository<Workspace, Long> {
     Optional<Workspace> findById(long id);
     List<Workspace> findAll();
-    Optional<Workspace> deleteBy(long id);
+    Optional<Workspace> deleteById(long id);
 }

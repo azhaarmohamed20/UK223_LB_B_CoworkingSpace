@@ -16,11 +16,11 @@ public class Booking {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="user_id", nullable = false)
     private User userId;
 
     @OneToOne
-    @JoinColumn(name = "workingspace_id")
+    @JoinColumn(name = "workingspace_id",  nullable = false)
     private Workspace workspaceId;
 
     private LocalDateTime bookingDate;
